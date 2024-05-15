@@ -12,7 +12,8 @@ public class GourmetDeli {
         // While loop for the home screen
         boolean home = true;
         while (home) {
-            System.out.println("Gourmet Deli Home");
+            System.out.println("\n\n\nWelcome to The Gourmet Deli\n\n");
+            System.out.println("To begin, select an option: ");
             System.out.println("1) New Order");
             System.out.println("X) Exit");
             String homeInput = myScanner.nextLine();
