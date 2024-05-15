@@ -20,6 +20,42 @@ public class GourmetDeli {
 
             switch (homeInput) {
                 case "1":
+                    // while loop for the New order screen
+                    boolean newOrder = true;
+                    while (newOrder) {
+                        System.out.println("\n\nCreate A New Order: ");
+                        System.out.println("        1) Add Sandwich\n        2) Add Drink        \n        3) Add Chips\n        4) Checkout");
+                        System.out.println("0) Cancel Order/Back Home");
+                        String orderScreenInput = myScanner.nextLine();
+
+                        switch  (orderScreenInput) {
+
+                            case "1":
+                                break;
+                            case "2":
+                                break;
+                            case "3":
+                                break;
+                            case "4":
+                                break;
+
+                            case "0":
+                                newOrder = false;
+                                break;
+                            default:
+                                System.out.println("Please Enter a Valid Option");
+
+
+                        }
+
+
+
+
+
+
+
+
+                    }
                     break;
                 case "x", "X":
                     home = false;
