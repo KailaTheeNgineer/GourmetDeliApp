@@ -113,13 +113,14 @@ public class GourmetDeli {
 
                                         if (userExtraMeat.contentEquals("y") || (userExtraMeat.contentEquals("Y") || (userExtraMeat.contentEquals("n") || (userExtraMeat.contentEquals("N"))))) {
 
-                                            if(convertValueToBool(userExtraMeat) == true) {
+                                            if (convertValueToBool(userExtraMeat) == true) {
 
-                                            userSandwich.setExtraMeat(true);
-                                            extraProteinScreen = false;
+                                                userSandwich.setExtraMeat(true);
+                                                extraProteinScreen = false;
+                                            } else {
+                                                extraProteinScreen = false;
+                                            }
                                         } else {
-                                            extraProteinScreen = false;
-                                        } } else {
                                             System.out.println(RED + "Value not recognized. Please try again.\n");
                                         }
                                     }
@@ -154,13 +155,14 @@ public class GourmetDeli {
 
                                             if (userExtraCheese.contentEquals("y") || (userExtraCheese.contentEquals("Y") || (userExtraCheese.contentEquals("n") || (userExtraCheese.contentEquals("N"))))) {
 
-                                                if(convertValueToBool(userExtraCheese) == true) {
+                                                if (convertValueToBool(userExtraCheese) == true) {
 
                                                     userSandwich.setExtraCheese(true);
                                                     extraCheeseScreen = false;
                                                 } else {
                                                     extraCheeseScreen = false;
-                                                } } else {
+                                                }
+                                            } else {
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
                                             }
                                         }
@@ -168,84 +170,135 @@ public class GourmetDeli {
 
                                         while (addToppings) {
 
-                                            System.out.println("Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
+                                            System.out.println(BRIGHT_WHITE + "Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
                                                     + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
                                             String userToppings = myScanner.nextLine();
 
                                             if (userToppings.equals("0")) {
                                                 addToppings = false;
+                                            } else if (userToppings.equals("1") || (userToppings.equalsIgnoreCase("Lettuce"))) {
+                                                standardToppings.add("Lettuce");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("2") || (userToppings.equalsIgnoreCase("Peppers"))) {
+                                                standardToppings.add("Peppers");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("3") || (userToppings.equalsIgnoreCase("Onions"))) {
+                                                standardToppings.add("Onions");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("4") || (userToppings.equalsIgnoreCase("Tomatoes"))) {
+                                                standardToppings.add("Tomatoes");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("5") || (userToppings.equalsIgnoreCase("Jalapenos"))) {
+                                                standardToppings.add("Jalapenos");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("6") || (userToppings.equalsIgnoreCase("Cucumbers"))) {
+
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("7") || (userToppings.equalsIgnoreCase("Pickles"))) {
+                                                standardToppings.add("Pickles");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("8") || (userToppings.equalsIgnoreCase("Guacamole"))) {
+                                                standardToppings.add("Guacamole");
+                                                addToppings = true;
+
+                                            } else if (userToppings.equals("9") || (userToppings.equalsIgnoreCase("Mushrooms"))) {
+                                                standardToppings.add("Mushrooms");
+                                                addToppings = true;
+
+                                            } else {
+                                                System.out.println(RED + "Topping not recognized. Please try again.");
                                             }
                                         }
                                         boolean addCondiments = true;
 
                                         while (addCondiments) {
 
-                                            System.out.println("Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
+                                            System.out.println(BRIGHT_WHITE + "Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
                                                     "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
                                             String userCondiments = myScanner.nextLine();
 
                                             if (userCondiments.equals("0")) {
                                                 addCondiments = false;
+                                            } else if (userCondiments.equalsIgnoreCase("1") || (userCondiments.equalsIgnoreCase("Mayo"))) {
+                                                condiments.add("Mayo");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("2") || (userCondiments.equalsIgnoreCase("Mustard"))) {
+                                                condiments.add("Mustard");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("3") || (userCondiments.equalsIgnoreCase("Ketchup"))) {
+                                                condiments.add("Ketchup");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("4") || (userCondiments.equalsIgnoreCase("Ranch"))) {
+                                                condiments.add("Ranch");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("5") || (userCondiments.equalsIgnoreCase("Vinaigrette"))) {
+                                                condiments.add("Vinaigrette");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("6") || (userCondiments.equalsIgnoreCase("Thousand Island"))) {
+                                                condiments.add("Thousand Island");
+                                                addCondiments = true;
+                                            } else {
+                                                System.out.println(RED + "Condiment not recognized. Please try again.");
+                                            }
+
+                                        }
+                                        boolean tosatedOrNot = true;
+                                        while (tosatedOrNot) {
+                                            System.out.println(BRIGHT_WHITE + "Would you like it toasted? (Y/N)");
+                                            String userToastSandwich = myScanner.nextLine();
+                                            convertValueToBool(userToastSandwich);
+
+                                            if (userToastSandwich.contentEquals("y") || (userToastSandwich.contentEquals("Y") || (userToastSandwich.contentEquals("n") || (userToastSandwich.contentEquals("N"))))) {
+
+                                                if (convertValueToBool(userToastSandwich) == true) {
+
+                                                    userSandwich.setToasted(true);
+                                                    tosatedOrNot = false;
+                                                } else {
+                                                    tosatedOrNot = false;
+                                                }
+                                            } else {
+                                                System.out.println(RED + "Value not recognized. Please try again.\n");
                                             }
 
                                         }
 
-                                        System.out.println("Would you like it toasted? (Y/N)");
-                                        String userToast1Sandwich = myScanner.nextLine();
-                                        boolean userToastSandwich = Boolean.getBoolean(userToast1Sandwich);
 
-
-                                        //Parse the size sandwich into a string holding the size sandwich
-                                        // Sandwich userSandiwch = new SandwichBuilder(userSizeSandwich);
                                     }
                                 }
 
-                                break;
-                            case "2":
-                                break;
-                            case "3":
-                                break;
-                            case "4":
-                                break;
-
-                            case "0":
-                                newOrder = false;
-                                break;
-                            default:
-                                System.out.println(RED + "\n\nNot A Valid Option");
-
-
-                        }
-
-
-
-
-
-
-
-
-                    }
                     break;
-                case "x", "X":
-                    home = false;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+
+                case "0":
+                    newOrder = false;
                     break;
                 default:
                     System.out.println(RED + "\n\nNot A Valid Option");
 
-
-
-
             }
-
-
         }
 
-
-
-
+            break;
+            case "x", "X":
+                home = false;
+                break;
+            default:
+                System.out.println(RED + "\n\nNot A Valid Option");
+        }
     }
-
-
 
 
 }
