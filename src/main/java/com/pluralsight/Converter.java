@@ -54,6 +54,35 @@ public class Converter {
         }
 
     }
+    static String convertIntToCheeseType(String input) {
+        switch (input) {
+            case "1", "american":
+                return "American";
+            case "2", "provolone":
+                return "Provolone";
+            case "3", "cheddar":
+                return "Cheddar";
+            case "4", "swiss":
+                return "Swiss";
+            case "5", "continue":
+                return "No Cheese";
+            default:
+                return "Cheese not recognized";
+        }
+
+    }
+
+    static boolean convertValueToBool(String input) {
+        switch (input) {
+            case "y", "yes", "ye":
+                return true;
+            case "n", "No":
+                return false;
+            default:
+                return false;
+        }
+
+    }
 
 
 }

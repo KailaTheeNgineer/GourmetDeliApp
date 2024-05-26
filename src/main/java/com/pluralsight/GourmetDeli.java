@@ -1,5 +1,4 @@
 package com.pluralsight;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,7 +34,7 @@ public class GourmetDeli {
                         System.out.println("0) Cancel Order");
                         String orderScreenInput = myScanner.nextLine();
 
-                        switch  (orderScreenInput) {
+                        switch (orderScreenInput) {
 
                             case "1":
                                 // while loop to exit adding a sandwich
@@ -47,7 +46,7 @@ public class GourmetDeli {
                                 ArrayList<String> condiments = new ArrayList();
                                 Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, premiumToppings, condiments, 0);
 
-                                while(addSandwich) {
+                                while (addSandwich) {
                                     System.out.println(BRIGHT_WHITE + "Add A Sandwich\n\n\n");
 
                                     boolean sizeSandwichScreen = true;
@@ -83,6 +82,7 @@ public class GourmetDeli {
                                     }
 
                                     boolean meatTypeScreen = true;
+                                    boolean extraProteinScreen = false;
 
                                     while (meatTypeScreen) {
                                         System.out.println(BRIGHT_WHITE + "Meat Type: \n1) Steak\n2) Ham\n3) Salami\n4) Roast Beef");
@@ -90,66 +90,115 @@ public class GourmetDeli {
                                         String userMeatType = myScanner.nextLine();
                                         userMeatType.toLowerCase();
                                         convertIntToMeatType(userMeatType);
-                                        if(convertIntToMeatType(userMeatType).equals("Meat not recognized")) {
+                                        if (convertIntToMeatType(userMeatType).equals("Meat not recognized")) {
                                             System.out.println(RED + "Meat not recognized. Please Try Again");
                                             meatTypeScreen = true;
 
+                                        } else if (convertIntToMeatType(userMeatType).equals("No meat")) {
+                                            extraProteinScreen = false;
+                                            meatTypeScreen = false;
                                         } else {
                                             userSandwich.setMeatType(convertIntToMeatType(userMeatType));
+                                            extraProteinScreen = true;
                                             meatTypeScreen = false;
                                         }
                                     }
-                                    System.out.println(userSandwich);
 
-                                    System.out.println("Would you like extra protein? Y/N (additional cost)");
-                                    String userExtra1Meat = myScanner.nextLine();
-                                    boolean userExtraMeat = Boolean.getBoolean(userExtra1Meat);
-                                    System.out.println("Cheese Type: \n1) American\n2) Provolone\n3) Cheddar\n4) Swiss\n5) Continue");
-                                    String userCheeseType = myScanner.nextLine();
-                                    System.out.println("Would you like extra cheese? Y/N (additional cost)");
-                                    String user1ExtraCheese = myScanner.nextLine();
-                                    boolean userExtraCheese = Boolean.getBoolean(user1ExtraCheese);
+                                    while (extraProteinScreen) {
+                                        System.out.println(BRIGHT_WHITE + "Would you like extra protein? Y/N (additional cost)");
+                                        String userExtraMeat = myScanner.nextLine();
+                                        userExtraMeat.toLowerCase();
+                                        convertValueToBool(userExtraMeat);
 
-                                    boolean addToppings = true;
 
-                                    while (addToppings) {
+                                        if (userExtraMeat.contentEquals("y") || (userExtraMeat.contentEquals("Y") || (userExtraMeat.contentEquals("n") || (userExtraMeat.contentEquals("N"))))) {
 
-                                        System.out.println("Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
-                                                + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
-                                        String userToppings = myScanner.nextLine();
+                                            if(convertValueToBool(userExtraMeat) == true) {
 
-                                        if (userToppings.equals("0")) {
-                                            addToppings = false;
+                                            userSandwich.setExtraMeat(true);
+                                            extraProteinScreen = false;
+                                        } else {
+                                            extraProteinScreen = false;
+                                        } } else {
+                                            System.out.println(RED + "Value not recognized. Please try again.\n");
                                         }
                                     }
-                                    boolean addCondiments = true;
+                                    boolean cheeseTypeScreen = true;
+                                    boolean extraCheeseScreen = false;
 
-                                    while (addCondiments) {
+                                    while (cheeseTypeScreen) {
+                                        System.out.println(BRIGHT_WHITE + "Cheese Type: \n1) American\n2) Provolone\n3) Cheddar\n4) Swiss\n5) Continue");
+                                        String userCheeseType = myScanner.nextLine();
+                                        userCheeseType.toLowerCase();
+                                        convertIntToCheeseType(userCheeseType);
+                                        if (convertIntToCheeseType(userCheeseType).equals("Cheese not recognized")) {
+                                            System.out.println(RED + "Cheese not recognized");
+                                            cheeseTypeScreen = true;
 
-                                        System.out.println("Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
-                                                "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
-                                        String userCondiments = myScanner.nextLine();
+                                        } else if (convertIntToCheeseType(userCheeseType).equals("No cheese")) {
 
-                                        if (userCondiments.equals("0")) {
-                                            addCondiments = false;
+                                            extraCheeseScreen = false;
+
+                                        } else {
+                                            userSandwich.setCheeseType(convertIntToCheeseType(userCheeseType));
+                                            cheeseTypeScreen = false;
+                                            extraCheeseScreen = true;
                                         }
 
+                                        while (extraCheeseScreen) {
+
+                                            System.out.println(BRIGHT_WHITE + "Would you like extra cheese? Y/N (additional cost)");
+                                            String userExtraCheese = myScanner.nextLine();
+                                            userExtraCheese.toLowerCase();
+                                            convertValueToBool(userExtraCheese);
+
+                                            if (userExtraCheese.contentEquals("y") || (userExtraCheese.contentEquals("Y") || (userExtraCheese.contentEquals("n") || (userExtraCheese.contentEquals("N"))))) {
+
+                                                if(convertValueToBool(userExtraCheese) == true) {
+
+                                                    userSandwich.setExtraCheese(true);
+                                                    extraCheeseScreen = false;
+                                                } else {
+                                                    extraCheeseScreen = false;
+                                                } } else {
+                                                System.out.println(RED + "Value not recognized. Please try again.\n");
+                                            }
+                                        }
+                                        boolean addToppings = true;
+
+                                        while (addToppings) {
+
+                                            System.out.println("Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
+                                                    + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
+                                            String userToppings = myScanner.nextLine();
+
+                                            if (userToppings.equals("0")) {
+                                                addToppings = false;
+                                            }
+                                        }
+                                        boolean addCondiments = true;
+
+                                        while (addCondiments) {
+
+                                            System.out.println("Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
+                                                    "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
+                                            String userCondiments = myScanner.nextLine();
+
+                                            if (userCondiments.equals("0")) {
+                                                addCondiments = false;
+                                            }
+
+                                        }
+
+                                        System.out.println("Would you like it toasted? (Y/N)");
+                                        String userToast1Sandwich = myScanner.nextLine();
+                                        boolean userToastSandwich = Boolean.getBoolean(userToast1Sandwich);
+
+
+                                        //Parse the size sandwich into a string holding the size sandwich
+                                        // Sandwich userSandiwch = new SandwichBuilder(userSizeSandwich);
                                     }
-
-                                    System.out.println("Would you like it toasted? (Y/N)");
-                                    String userToast1Sandwich = myScanner.nextLine();
-                                    boolean userToastSandwich = Boolean.getBoolean(userToast1Sandwich);
-
-
-                                    //Parse the size sandwich into a string holding the size sandwich
-                                    // Sandwich userSandiwch = new SandwichBuilder(userSizeSandwich);
-
                                 }
-
-
-
-
-
 
                                 break;
                             case "2":
