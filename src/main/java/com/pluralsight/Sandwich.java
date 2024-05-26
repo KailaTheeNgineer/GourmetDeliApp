@@ -3,32 +3,30 @@ package com.pluralsight;
 import java.util.List;
 
 public abstract class Sandwich {
-    protected int sizeSandwich; protected String breadType; protected boolean extraMeat;
-    protected String cheeseType; protected boolean extraCheese; protected boolean toasted;
+    protected String sizeSandwich; protected String breadType; protected boolean extraMeat;
+    protected String cheeseType; protected boolean extraCheese; protected boolean toasted; protected String meatType;
     protected  List<String> standardToppings; protected  List<String> premiumToppings;
     protected  List<String> condiments; protected double total;
 
-    public Sandwich(int sizeSandwich, String breadType, boolean extraMeat, String cheeseType,
-                    boolean extraCheese, boolean toasted, List<String> standardToppings,
-                    List<String> premiumToppings, List<String> condiments, double total)
-
-    {   this.sizeSandwich = sizeSandwich;
+    public Sandwich(String sizeSandwich, String breadType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, String meatType, List<String> standardToppings, List<String> premiumToppings, List<String> condiments, double total) {
+        this.sizeSandwich = sizeSandwich;
         this.breadType = breadType;
         this.extraMeat = extraMeat;
         this.cheeseType = cheeseType;
         this.extraCheese = extraCheese;
         this.toasted = toasted;
+        this.meatType = meatType;
         this.standardToppings = standardToppings;
         this.premiumToppings = premiumToppings;
         this.condiments = condiments;
         this.total = total;
     }
 
-    public int getSizeSandwich() {
+    public String getSizeSandwich() {
         return sizeSandwich;
     }
 
-    public void setSizeSandwich(int sizeSandwich) {
+    public void setSizeSandwich(String sizeSandwich) {
         this.sizeSandwich = sizeSandwich;
     }
 
@@ -70,6 +68,14 @@ public abstract class Sandwich {
 
     public void setToasted(boolean toasted) {
         this.toasted = toasted;
+    }
+
+    public String getMeatType() {
+        return meatType;
+    }
+
+    public void setMeatType(String meatType) {
+        this.meatType = meatType;
     }
 
     public List<String> getStandardToppings() {
