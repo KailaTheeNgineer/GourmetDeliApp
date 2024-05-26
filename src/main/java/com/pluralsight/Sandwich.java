@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sandwich {
-    protected String sizeSandwich; protected String breadType; protected boolean extraMeat;
-    protected String cheeseType; protected boolean extraCheese; protected boolean toasted; protected String meatType;
+    protected String sizeSandwich; protected String breadType; protected String meatType; protected boolean extraMeat;
+    protected String cheeseType; protected boolean extraCheese; protected boolean toasted;
     protected  List<String> standardToppings; protected  List<String> premiumToppings;
     protected  List<String> condiments; protected double total;
 
-    public Sandwich(String sizeSandwich, String breadType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, String meatType, List<String> standardToppings, List<String> premiumToppings, List<String> condiments, double total) {
+    public Sandwich(String sizeSandwich, String breadType, String meatType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, List<String> standardToppings, List<String> condiments, double total) {
         this.sizeSandwich = sizeSandwich;
         this.breadType = breadType;
+        this.meatType = meatType;
         this.extraMeat = extraMeat;
         this.cheeseType = cheeseType;
         this.extraCheese = extraCheese;
         this.toasted = toasted;
         this.meatType = meatType;
         this.standardToppings = standardToppings;
-        this.premiumToppings = premiumToppings;
         this.condiments = condiments;
         this.total = total;
     }
@@ -87,14 +87,6 @@ public abstract class Sandwich {
         this.standardToppings = standardToppings;
     }
 
-    public List<String> getPremiumToppings() {
-        return premiumToppings;
-    }
-
-    public void setPremiumToppings(List<String> premiumToppings) {
-        this.premiumToppings = premiumToppings;
-    }
-
     public List<String> getCondiments() {
         return condiments;
     }
@@ -110,6 +102,5 @@ public abstract class Sandwich {
     public void setTotal(double total) {
         this.total = total;
     }
-
 
 }

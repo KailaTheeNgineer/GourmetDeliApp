@@ -12,6 +12,7 @@ public class GourmetDeli {
     public static final Scanner myScanner = new Scanner(System.in);
     public static final String RED = "\u001B[31m";
     public static final String BRIGHT_WHITE = "\u001B[97m";
+    public static final String BRIGHT_GREEN = "\u001B[92m";
 
     public static void main(String[] args) {
 
@@ -42,9 +43,9 @@ public class GourmetDeli {
 
 
                                 ArrayList<String> standardToppings = new ArrayList();
-                                ArrayList<String> premiumToppings = new ArrayList();
                                 ArrayList<String> condiments = new ArrayList();
-                                Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, premiumToppings, condiments, 0);
+                                ArrayList<Sandwich> userOrder = new ArrayList<>();
+                                Sandwich userSandwich = new SandwichBuilder("null", "null",  "null", false, "null", false, false, standardToppings, condiments, 0);
 
                                 while (addSandwich) {
                                     System.out.println(BRIGHT_WHITE + "Add A Sandwich\n\n\n");
@@ -267,6 +268,12 @@ public class GourmetDeli {
                                             } else {
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
                                             }
+                                            // Adding sandwich to their order arrayList
+                                            userOrder.add(userSandwich);
+                                           double finalCost = addTotal(userSandwich);
+                                            userSandwich.setTotal(finalCost);
+                                            System.out.println(BRIGHT_GREEN + "Sandwich Added Successfully\n");
+                                            addSandwich = false;
 
                                         }
 
@@ -302,3 +309,91 @@ public class GourmetDeli {
 
 
 }
+
+    private static double addTotal(Sandwich userSandwichOrder) {
+
+        if(userSandwichOrder.getSizeSandwich().equalsIgnoreCase("4 inch")) {
+            double orderTotal = 0;
+            orderTotal += 5.50;
+            if (userSandwichOrder.getMeatType().equalsIgnoreCase("No meat")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += 1;
+            }
+            if (userSandwichOrder.extraMeat == true) {
+                orderTotal += .50;
+            }
+
+            if (userSandwichOrder.getCheeseType().equalsIgnoreCase("No cheese")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += .75;
+            }
+            if (userSandwichOrder.extraCheese == true) {
+
+                orderTotal += .30;
+
+                return orderTotal;
+            }
+
+
+
+        } else if (userSandwichOrder.getSizeSandwich().equalsIgnoreCase("8 inch")) {
+            double orderTotal = 0;
+            orderTotal += 7;
+            if (userSandwichOrder.getMeatType().equalsIgnoreCase("No meat")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += 2;
+            }
+            if (userSandwichOrder.extraMeat == true) {
+                orderTotal += 1;
+            }
+
+            if (userSandwichOrder.getCheeseType().equalsIgnoreCase("No cheese")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += 1.50;
+            }
+            if (userSandwichOrder.extraCheese == true) {
+
+                orderTotal += .60;
+
+                return orderTotal;
+            }
+
+        } else {
+            double orderTotal = 0;
+            orderTotal += 8.50;
+            if (userSandwichOrder.getMeatType().equalsIgnoreCase("No meat")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += 3;
+            }
+            if (userSandwichOrder.extraMeat == true) {
+                orderTotal += 1.50;
+            }
+
+            if (userSandwichOrder.getCheeseType().equalsIgnoreCase("No cheese")) {
+
+                orderTotal += 0;
+            } else {
+                orderTotal += 2.25;
+            }
+            if (userSandwichOrder.extraCheese == true) {
+
+                orderTotal += .90;
+
+                return orderTotal;
+            }
+
+
+        }
+        return 0;
+    }
+    }
