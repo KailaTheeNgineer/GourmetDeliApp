@@ -283,8 +283,57 @@ public class GourmetDeli {
 
                     break;
                 case "2":
+                    boolean drinkScreen = true;
+
+                    while (drinkScreen) {
+                        System.out.println(BRIGHT_WHITE + "Add a Drink: ");
+                        System.out.println("1) Small\n2) Medium \n3) Large \n0) Back");
+                        String userDrinkInput = myScanner.nextLine();
+                        userDrinkInput.toLowerCase();
+
+                        if (userDrinkInput.equals("0")) {
+
+                            drinkScreen = false;
+
+                        } else if(userDrinkInput.equals("1") || userDrinkInput.equalsIgnoreCase("small") || userDrinkInput.equals("2") || userDrinkInput.equalsIgnoreCase("medium") || userDrinkInput.equals("3") || userDrinkInput.equalsIgnoreCase("Large")) {
+                            convertStringToDrink(userDrinkInput);
+
+                            Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), 0);
+                           double drinkTotal = Drink.getDrinkTotal(userDrink);
+                           userDrink.setDrinktotal(drinkTotal);
+
+
+
+                        } else {
+                            System.out.println(RED + "Drink size not recognized. Please try Again.\n");
+
+
+                        }
+                    }
                     break;
                 case "3":
+                    boolean addChipsScreen = true;
+
+                    while (addChipsScreen) {
+                        System.out.println(BRIGHT_WHITE + "Add Chips: ");
+                        System.out.println("1 ) Add Chips\n 0) Back");
+                        String userChipSelection = myScanner.nextLine();
+                        if (userChipSelection.equalsIgnoreCase("1") || (userChipSelection.contentEquals("Add Chips"))) {
+
+                            Chips userChips = new Chips("Chips", 1.5);
+
+
+                        } else if (userChipSelection.equals("0")) {
+
+                            addChipsScreen = false;
+
+                        } else {
+                            System.out.println(RED + "Value not recognized. Please try again.");
+
+
+                        }
+
+                    }
                     break;
                 case "4":
                     break;

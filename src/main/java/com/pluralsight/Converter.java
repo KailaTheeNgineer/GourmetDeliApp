@@ -84,5 +84,18 @@ public class Converter {
 
     }
 
+    static String convertStringToDrink(String input) {
+        switch (input) {
+            case "1", "small":
+                return "Small";
+            case "2", "medium":
+                return "Medium";
+            case "3", "large":
+                return "Large";
+            default:
+                return "Drink Size not recognized";
+        }
 
-}
+
+    }
+    }
