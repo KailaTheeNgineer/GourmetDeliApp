@@ -272,7 +272,7 @@ public class GourmetDeli {
                                             userOrder.add(userSandwich);
                                            double finalCost = addTotal(userSandwich);
                                             userSandwich.setTotal(finalCost);
-                                            System.out.println(BRIGHT_GREEN + "Sandwich Added Successfully\n");
+                                            System.out.println(BRIGHT_GREEN + "\nSandwich Added Successfully\n");
                                             addSandwich = false;
 
                                         }
@@ -301,6 +301,7 @@ public class GourmetDeli {
                             Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), 0);
                            double drinkTotal = Drink.getDrinkTotal(userDrink);
                            userDrink.setDrinktotal(drinkTotal);
+                            System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
 
 
 
@@ -321,6 +322,7 @@ public class GourmetDeli {
                         if (userChipSelection.equalsIgnoreCase("1") || (userChipSelection.contentEquals("Add Chips"))) {
 
                             Chips userChips = new Chips("Chips", 1.5);
+                            System.out.println(BRIGHT_GREEN + "\nChips Added Successfully\n");
 
 
                         } else if (userChipSelection.equals("0")) {
