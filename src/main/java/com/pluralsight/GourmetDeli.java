@@ -264,17 +264,15 @@ public class GourmetDeli {
                                             String userToastSandwich = myScanner.nextLine();
                                             convertValueToBool(userToastSandwich);
 
-                                            if (userToastSandwich.contentEquals("y") || (userToastSandwich.contentEquals("Y") || (userToastSandwich.contentEquals("n") || (userToastSandwich.contentEquals("N"))))) {
+                                            if (userToastSandwich.contains("y") || (userToastSandwich.contains("Y"))) {
 
-                                                if (convertValueToBool(userToastSandwich) == true) {
-
-                                                    userSandwich.setToasted(true);
-                                                    tosatedOrNot = false;
-                                                } else {
-                                                    tosatedOrNot = false;
-                                                }
-                                            } else {
+                                                userSandwich.setExtraMeat(true);
+                                                tosatedOrNot = false;
+                                            } else if (userToastSandwich.contains("n") || (userToastSandwich.contains("N"))) {
+                                                tosatedOrNot = false;
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
+                                            } else { System.out.println(RED + "Value not recognized. Please try again.\n");
+
                                             }
                                             // Adding sandwich to their order arrayList
                                             userOrder.add(userSandwich);
