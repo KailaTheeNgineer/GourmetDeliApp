@@ -10,6 +10,8 @@ public class GourmetDeli {
 
     // creating static scanner to access at all times
     public static final Scanner myScanner = new Scanner(System.in);
+
+    // creating static colors for aesthetic purposes
     public static final String RED = "\u001B[31m";
     public static final String BRIGHT_WHITE = "\u001B[97m";
     public static final String BRIGHT_GREEN = "\u001B[92m";
@@ -297,8 +299,12 @@ public class GourmetDeli {
 
                         } else if(userDrinkInput.equals("1") || userDrinkInput.equalsIgnoreCase("small") || userDrinkInput.equals("2") || userDrinkInput.equalsIgnoreCase("medium") || userDrinkInput.equals("3") || userDrinkInput.equalsIgnoreCase("Large")) {
                             convertStringToDrink(userDrinkInput);
+                            System.out.println("Choose a Drink: ");
+                            System.out.println("1 ) Pepsi \n 2) Sprite \n3) Sweet Tea\n 4) Water");
+                            String userDrinkFlavor = myScanner.nextLine();
+                            userDrinkFlavor.toLowerCase();
 
-                            Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), 0);
+                            Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), convertStringToDrinkFlavor(userDrinkFlavor), 0);
                            double drinkTotal = Drink.getDrinkTotal(userDrink);
                            userDrink.setDrinktotal(drinkTotal);
                             System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
@@ -320,8 +326,10 @@ public class GourmetDeli {
                         System.out.println("1 ) Add Chips\n 0) Back");
                         String userChipSelection = myScanner.nextLine();
                         if (userChipSelection.equalsIgnoreCase("1") || (userChipSelection.contentEquals("Add Chips"))) {
-
-                            Chips userChips = new Chips("Chips", 1.5);
+                            System.out.println("1) Doritos\n 2) Classic Potato Chips \n3) Cheetos");
+                            String userChipFlavor = myScanner.nextLine();
+                            userChipFlavor.toLowerCase();
+                            Chips userChips = new Chips(convertStringToChip(userChipFlavor), 1.5);
                             System.out.println(BRIGHT_GREEN + "\nChips Added Successfully\n");
 
 

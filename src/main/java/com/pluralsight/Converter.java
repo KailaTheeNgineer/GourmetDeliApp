@@ -98,4 +98,34 @@ public class Converter {
 
 
     }
+
+    static String convertStringToChip(String input) {
+        switch (input) {
+            case "1", "doritos":
+                return "Small";
+            case "2", "classic potato chips":
+                return "Classic Potato Chips";
+            case "3", "cheetos":
+                return "Cheetos";
+            default:
+                return "Chip Flavor not recognized";
+        }
+    }
+
+        static String convertStringToDrinkFlavor(String input) {
+            switch (input) {
+                case "1", "pepsi":
+                    return "Pepsi";
+                case "2", "sprite":
+                    return "Sprite";
+                case "3", "sweet tea":
+                    return "Sweet Tea";
+                case "4", "water":
+                    return "Water";
+                default:
+                    return "Drink Flavor not recognized";
+            }
+
+
+    }
     }
