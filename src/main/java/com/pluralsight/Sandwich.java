@@ -79,20 +79,16 @@ public abstract class Sandwich {
         this.meatType = meatType;
     }
 
-    public List<String> getStandardToppings() {
-        return standardToppings;
+    public String printStandardToppings(List<String> input) {
+        for (String standardToppings : input) {
+            return standardToppings;
+        }
+        return null;
     }
 
-    public void setStandardToppings(List<String> standardToppings) {
-        this.standardToppings = standardToppings;
-    }
 
     public List<String> getCondiments() {
         return condiments;
-    }
-
-    public void setCondiments(List<String> condiments) {
-        this.condiments = condiments;
     }
 
     public double getTotal() {
@@ -102,5 +98,7 @@ public abstract class Sandwich {
     public void setTotal(double total) {
         this.total = total;
     }
+
+
 
 }

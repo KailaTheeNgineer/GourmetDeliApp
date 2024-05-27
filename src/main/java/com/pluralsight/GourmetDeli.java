@@ -1,5 +1,6 @@
 package com.pluralsight;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 // Importing conversion class
@@ -37,6 +38,17 @@ public class GourmetDeli {
                         System.out.println("0) Cancel Order");
                         String orderScreenInput = myScanner.nextLine();
 
+                        ArrayList<String> standardToppings = new ArrayList();
+                        ArrayList<String> condiments = new ArrayList();
+                        ArrayList<Sandwich> userOrder = new ArrayList<>();
+                        ArrayList<Chips> chipsOrder = new ArrayList<>();
+                        ArrayList<Drink> drinksOrder = new ArrayList<>();
+
+
+
+
+
+
                         switch (orderScreenInput) {
 
                             case "1":
@@ -44,9 +56,7 @@ public class GourmetDeli {
                                 boolean addSandwich = true;
 
 
-                                ArrayList<String> standardToppings = new ArrayList();
-                                ArrayList<String> condiments = new ArrayList();
-                                ArrayList<Sandwich> userOrder = new ArrayList<>();
+
                                 Sandwich userSandwich = new SandwichBuilder("null", "null",  "null", false, "null", false, false, standardToppings, condiments, 0);
 
                                 while (addSandwich) {
@@ -114,18 +124,16 @@ public class GourmetDeli {
                                         convertValueToBool(userExtraMeat);
 
 
-                                        if (userExtraMeat.contentEquals("y") || (userExtraMeat.contentEquals("Y") || (userExtraMeat.contentEquals("n") || (userExtraMeat.contentEquals("N"))))) {
-
-                                            if (convertValueToBool(userExtraMeat) == true) {
+                                        if (userExtraMeat.contains("y") || (userExtraMeat.contains("Y"))) {
 
                                                 userSandwich.setExtraMeat(true);
                                                 extraProteinScreen = false;
-                                            } else {
-                                                extraProteinScreen = false;
-                                            }
-                                        } else {
+                                            } else if (userExtraMeat.contains("n") || (userExtraMeat.contains("N"))) {
+                                            extraProteinScreen = false;
                                             System.out.println(RED + "Value not recognized. Please try again.\n");
-                                        }
+                                        } else { System.out.println(RED + "Value not recognized. Please try again.\n");
+
+                                            }
                                     }
                                     boolean cheeseTypeScreen = true;
                                     boolean extraCheeseScreen = false;
@@ -156,17 +164,15 @@ public class GourmetDeli {
                                             userExtraCheese.toLowerCase();
                                             convertValueToBool(userExtraCheese);
 
-                                            if (userExtraCheese.contentEquals("y") || (userExtraCheese.contentEquals("Y") || (userExtraCheese.contentEquals("n") || (userExtraCheese.contentEquals("N"))))) {
+                                            if (userExtraCheese.contains("y") || (userExtraCheese.contains("Y"))) {
 
-                                                if (convertValueToBool(userExtraCheese) == true) {
-
-                                                    userSandwich.setExtraCheese(true);
-                                                    extraCheeseScreen = false;
-                                                } else {
-                                                    extraCheeseScreen = false;
-                                                }
-                                            } else {
+                                                userSandwich.setExtraMeat(true);
+                                                extraCheeseScreen = false;
+                                            } else if (userExtraCheese.contains("n") || (userExtraCheese.contains("N"))) {
+                                                extraCheeseScreen = false;
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
+                                            } else { System.out.println(RED + "Value not recognized. Please try again.\n");
+
                                             }
                                         }
                                         boolean addToppings = true;
@@ -308,6 +314,7 @@ public class GourmetDeli {
                            double drinkTotal = Drink.getDrinkTotal(userDrink);
                            userDrink.setDrinktotal(drinkTotal);
                             System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
+                            drinkScreen = false;
 
 
 
@@ -331,6 +338,7 @@ public class GourmetDeli {
                             userChipFlavor.toLowerCase();
                             Chips userChips = new Chips(convertStringToChip(userChipFlavor), 1.5);
                             System.out.println(BRIGHT_GREEN + "\nChips Added Successfully\n");
+                            addChipsScreen = false;
 
 
                         } else if (userChipSelection.equals("0")) {
@@ -346,9 +354,28 @@ public class GourmetDeli {
                     }
                     break;
                 case "4":
+
+                    boolean checkoutScreen = true;
+                    while (checkoutScreen) {
+
+                        System.out.println(BRIGHT_WHITE + "Review Your Order: \n");
+                        for (int i = 0; i < userOrder.size(); i++) {
+
+                            System.out.println();
+
+                        }
+
+                    }
                     break;
 
                 case "0":
+
+                    // Deletes the order
+                    userOrder.clear();
+                    drinksOrder.clear();
+                    chipsOrder.clear();
+
+                    // Exits to home screen
                     newOrder = false;
                     break;
                 default:
