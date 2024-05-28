@@ -35,15 +35,14 @@ public class Drink {
     }
 
     public static double getDrinkTotal(Drink userDrink){
-        double drinkTotalCalculator = 0;
-        if(userDrink.drinkSize.equals("small")) {
-            return drinkTotalCalculator = 2;
-        } else if (userDrink.drinkSize.equals("medium")) {
-            return drinkTotalCalculator = 2.5;
+        if(userDrink.drinkSize.equalsIgnoreCase("small")) {
+            return 2;
+        } else if (userDrink.drinkSize.equalsIgnoreCase("medium")) {
+            return   2.5;
 
-        } else if (userDrink.drinkSize.equals("large")) {
+        } else if (userDrink.drinkSize.equalsIgnoreCase("large")) {
 
-            return drinkTotalCalculator = 3;
+            return 3;
         } else {
             return 0;
         }
