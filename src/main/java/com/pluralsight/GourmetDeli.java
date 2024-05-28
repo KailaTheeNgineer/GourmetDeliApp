@@ -57,8 +57,8 @@ public class GourmetDeli {
                             FileWriter receiptWriter = new FileWriter(receipt, true);
 
 
-                            System.out.println(BRIGHT_WHITE + "\n\nCreate A New Order: ");
-                            System.out.println("        1) Add Sandwich\n        2) Add Drink        \n        3) Add Chips\n        4) Checkout");
+                            System.out.println(BRIGHT_WHITE + BOLD + "\n\nCreate A New Order: " + ANSI_RESET);
+                            System.out.println(BRIGHT_WHITE + "        1) Add Sandwich\n        2) Add Drink        \n        3) Add Chips\n        4) Checkout");
                             System.out.println("0) Cancel Order");
                             String orderScreenInput = myScanner.nextLine();
 
