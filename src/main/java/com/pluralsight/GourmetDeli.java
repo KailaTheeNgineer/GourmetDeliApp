@@ -430,7 +430,7 @@ public class GourmetDeli {
                                         } else if (userChipFlavor.equals("1") || (userChipFlavor.equals("2")) || (userChipFlavor.equals("3"))) {
                                             convertStringToChip(userChipFlavor);
                                             Chips userChips = new Chips(convertStringToChip(userChipFlavor), 1.5);
-                                            receiptWriter.write("\n" + convertStringToChip(userChipFlavor) + "... $1.50\n");
+                                            receiptWriter.write("\n" + userChips.getChipFlavor() + "... $1.50\n");
                                             System.out.println(BRIGHT_GREEN + "\nChips Added Successfully\n");
                                             addChipsScreen = false;
 

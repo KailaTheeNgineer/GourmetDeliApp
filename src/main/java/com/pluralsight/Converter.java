@@ -102,7 +102,7 @@ public class Converter {
     static String convertStringToChip(String input) {
         switch (input) {
             case "1", "doritos":
-                return "Small";
+                return "Doritos";
             case "2", "classic potato chips":
                 return "Classic Potato Chips";
             case "3", "cheetos":

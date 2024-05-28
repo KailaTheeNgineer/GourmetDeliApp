@@ -9,6 +9,10 @@ public class Chips {
         this.chipTotal = chipTotal;
     }
 
+    public String getChipFlavor() {
+        return chipFlavor;
+    }
+
     public double getChipTotal() {
         return chipTotal;
     }
