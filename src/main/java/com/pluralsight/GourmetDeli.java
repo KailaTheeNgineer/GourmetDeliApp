@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 // Importing conversion class
@@ -46,7 +47,6 @@ public class GourmetDeli {
                     ArrayList<Drink> drinksOrder = new ArrayList<>();
 
 
-
                     // while loop for the New order screen
                     boolean newOrder = true;
                     while (newOrder) {
@@ -63,8 +63,6 @@ public class GourmetDeli {
                             String orderScreenInput = myScanner.nextLine();
 
 
-
-
                             switch (orderScreenInput) {
 
                                 case "1":
@@ -72,7 +70,7 @@ public class GourmetDeli {
                                     boolean addSandwich = true;
 
 
-                                    Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, condiments,"No side", 0);
+                                    Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, condiments, "No side", 0);
 
                                     while (addSandwich) {
                                         System.out.println(BRIGHT_WHITE + "Add A Sandwich\n\n\n");
@@ -108,7 +106,7 @@ public class GourmetDeli {
                                                 breadTypeScreen = true;
                                             } else {
                                                 userSandwich.setBreadType(convertIntToBread(userBreadType));
-                                                receiptWriter.write("Bread Type: "+ convertIntToBread(userBreadType) + " ... +$" + userSandwich.getBreadTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write("Bread Type: " + convertIntToBread(userBreadType) + " ... +$" + userSandwich.getBreadTotal(userSandwich.getSizeSandwich()) + "\n");
 
                                                 breadTypeScreen = false;
                                             }
@@ -132,7 +130,7 @@ public class GourmetDeli {
                                                 meatTypeScreen = false;
                                             } else {
                                                 userSandwich.setMeatType(convertIntToMeatType(userMeatType));
-                                                receiptWriter.write(convertIntToMeatType(userMeatType) + "... +$" + userSandwich.getMeatTotal(userSandwich.getSizeSandwich())+ "\n");
+                                                receiptWriter.write(convertIntToMeatType(userMeatType) + "... +$" + userSandwich.getMeatTotal(userSandwich.getSizeSandwich()) + "\n");
 
                                                 extraProteinScreen = true;
                                                 meatTypeScreen = false;
@@ -150,7 +148,7 @@ public class GourmetDeli {
 
                                                 userSandwich.setExtraMeat(true);
 
-                                                receiptWriter.write("Extra Meat: " + "... +$" + userSandwich.getExtraMeatTotal(userSandwich.getSizeSandwich())+ "\n");
+                                                receiptWriter.write("Extra Meat: " + "... +$" + userSandwich.getExtraMeatTotal(userSandwich.getSizeSandwich()) + "\n");
 
                                                 extraProteinScreen = false;
                                             } else if (userExtraMeat.contains("n") || (userExtraMeat.contains("N"))) {
@@ -177,9 +175,8 @@ public class GourmetDeli {
 
                                             } else if (convertIntToCheeseType(userCheeseType).equals("No Cheese")) {
 
-                                                extraCheeseScreen =false;
+                                                extraCheeseScreen = false;
                                                 cheeseTypeScreen = false;
-
 
 
                                             } else {
@@ -344,22 +341,47 @@ public class GourmetDeli {
                                             }
                                         }
 
-                                            // Adding sandwich to their order arrayList
-                                            userOrder.add(userSandwich);
+                                        boolean sideScreen = true;
+
+                                        while (sideScreen) {
+
+                                            System.out.println(BRIGHT_WHITE + "Add Sides: \n1) Side Sauce 2) Au jus 3) Continue\n");
+                                            String userSides = myScanner.nextLine();
+
+                                            if (userSides.equals("3")) {
+                                                sideScreen = false;
+                                            } else if (userSides.equalsIgnoreCase("1") || (userSides.equalsIgnoreCase("Side Sauce"))) {
 
 
+                                                receiptWriter.write("     + Side Sauce");
 
-                                            double finalCost = addTotal(userSandwich);
-                                            userSandwich.setTotal(finalCost);
-                                            orderTotals.add(userSandwich.getTotal());
-                                            receiptWriter.write(String.format("...... $%.2f", userSandwich.getTotal()));
+                                                receiptWriter.write("\n");
 
-                                            System.out.println(BRIGHT_GREEN + "\nSandwich Added Successfully\n");
-                                            addSandwich = false;
 
+                                                sideScreen = false;
+                                            } else if (userSides.equalsIgnoreCase("2") || (userSides.equalsIgnoreCase("Au jus"))) {
+
+                                                receiptWriter.write("     + Au jus\n");
+
+                                                sideScreen = false;
+
+
+                                            }
                                         }
 
+                                        // Adding sandwich to their order arrayList
+                                        userOrder.add(userSandwich);
 
+
+                                        double finalCost = addTotal(userSandwich);
+                                        userSandwich.setTotal(finalCost);
+                                        orderTotals.add(userSandwich.getTotal());
+                                        receiptWriter.write(String.format("...... $%.2f", userSandwich.getTotal()));
+
+                                        System.out.println(BRIGHT_GREEN + "\nSandwich Added Successfully\n");
+                                        addSandwich = false;
+
+                                    }
 
 
                                     break;
@@ -460,14 +482,11 @@ public class GourmetDeli {
                                     }
 
 
-
-
                                     break;
                                 case "4":
 
                                     boolean checkoutScreen = true;
                                     while (checkoutScreen) {
-
 
 
                                         Scanner myReader = new Scanner(receipt);
@@ -505,10 +524,6 @@ public class GourmetDeli {
 
                                                 // Exits to home screen
                                                 newOrder = false;
-
-
-
-
 
 
                                         }
@@ -554,12 +569,11 @@ public class GourmetDeli {
     }
 
 
-
     private static double addTotal(Sandwich userSandwichOrder) {
 
         double orderTotal = 0;
 
-        if(userSandwichOrder.getSizeSandwich().equalsIgnoreCase("4 inch")) {
+        if (userSandwichOrder.getSizeSandwich().equalsIgnoreCase("4 inch")) {
 
             orderTotal += 5.50;
             if (userSandwichOrder.getMeatType().equalsIgnoreCase("No meat")) {
@@ -586,7 +600,7 @@ public class GourmetDeli {
             }
 
 
-        } else if(userSandwichOrder.getSizeSandwich().equalsIgnoreCase("8 inch")) {
+        } else if (userSandwichOrder.getSizeSandwich().equalsIgnoreCase("8 inch")) {
 
 
             orderTotal += 7.00;
@@ -646,13 +660,13 @@ public class GourmetDeli {
         return orderTotal;
     }
 
-    public String printListValues(ArrayList input) {
+    public static String printListValues(ArrayList input) {
 
-        for (Object output : input) {
-            System.out.println(output);
+        for (Object s : input) {
+            return s.toString();
+
 
         }
-        return "No Toppings Available";
+        return "No Sides Available";
     }
-
 }

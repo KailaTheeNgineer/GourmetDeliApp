@@ -139,6 +139,15 @@ public class Converter {
         return sum1;
 
     }
+
+    public String printListValues(ArrayList input) {
+
+        for(int i=0; i<input.size(); i++){
+            return (String) input.get(i);
+        }
+
+        return "No Sides Available";
+    }
     }
 
 
