@@ -9,7 +9,6 @@ import java.util.Scanner;
 // Importing conversion class
 import static com.pluralsight.Converter.*;
 
-
 public class GourmetDeli {
 
     // creating static scanner to access at all times
@@ -50,12 +49,8 @@ public class GourmetDeli {
                     boolean newOrder = true;
                     while (newOrder) {
 
-
-                        File receipt = new File(directoryPath + receiptDate);
-
-
-
                         try {
+                            File receipt = new File(directoryPath + receiptDate);
                             receipt.createNewFile();
                             FileWriter receiptWriter = new FileWriter(receipt, true);
 
@@ -476,13 +471,45 @@ public class GourmetDeli {
                                         Scanner myReader = new Scanner(receipt);
                                         while (myReader.hasNextLine()) {
                                             String output = myReader.nextLine();
-                                            System.out.println(output);
+                                            System.out.println(BRIGHT_WHITE + output);
 
                                         }
 
 
                                         double receiptTotal = addReceiptTotal(orderTotals);
-                                        System.out.printf("\n\nTotal:      $%.2f", receiptTotal);
+                                        System.out.printf(BRIGHT_GREEN + "\n\nTotal:      $%.2f", receiptTotal);
+
+                                        System.out.println(BRIGHT_WHITE + "\n\n1) Confirm Order \n2) Add More \n3) Cancel Order");
+                                        String checkoutInput = myScanner.nextLine();
+                                        switch (checkoutInput) {
+                                            case "1", "Confirm", "Confirm Order":
+                                                System.out.println(BRIGHT_GREEN + "\n\nOrder Confirmed!");
+                                                newOrder = false;
+                                                home = true;
+                                                break;
+                                            case "2", "Add More", "Add":
+                                                checkoutScreen = false;
+                                                break;
+                                            case "3", "Cancel", "Cancel Order":
+                                                System.out.println(RED + "\n\nOrder Cancelled");
+
+                                                // Deletes the order from array
+                                                userOrder.clear();
+                                                drinksOrder.clear();
+                                                chipsOrder.clear();
+
+                                                // Deletes order from receipt file
+                                                receipt.delete();
+
+                                                // Exits to home screen
+                                                newOrder = false;
+
+
+
+
+
+
+                                        }
                                         myReader.close();
                                         break;
 
@@ -491,10 +518,13 @@ public class GourmetDeli {
                                     break;
                                 case "0":
 
-                                    // Deletes the order
+                                    // Deletes the order from array
                                     userOrder.clear();
                                     drinksOrder.clear();
                                     chipsOrder.clear();
+
+                                    // Deletes order from receipt file
+                                    receipt.delete();
 
                                     // Exits to home screen
                                     newOrder = false;
