@@ -4,7 +4,7 @@ public class Drink {
 
     protected String drinkSize; protected double drinktotal; protected String drinkFlavor;
 
-    public Drink(String drinkSize, String drinkFlavor, double drinktotal) {
+    public Drink(String drinkSize, String drinkFlavor, double drinkotal) {
         this.drinkSize = drinkSize;
         this.drinkFlavor = drinkFlavor;
         this.drinktotal = drinktotal;

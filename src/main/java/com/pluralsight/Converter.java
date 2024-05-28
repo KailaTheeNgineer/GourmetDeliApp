@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+
 // Converter class carrying methods for catching errors
 public class Converter {
 
@@ -54,6 +56,7 @@ public class Converter {
         }
 
     }
+
     static String convertIntToCheeseType(String input) {
         switch (input) {
             case "1", "american":
@@ -112,20 +115,31 @@ public class Converter {
         }
     }
 
-        static String convertStringToDrinkFlavor(String input) {
-            switch (input) {
-                case "1", "pepsi":
-                    return "Pepsi";
-                case "2", "sprite":
-                    return "Sprite";
-                case "3", "sweet tea":
-                    return "Sweet Tea";
-                case "4", "water":
-                    return "Water";
-                default:
-                    return "Drink Flavor not recognized";
-            }
+    static String convertStringToDrinkFlavor(String input) {
+        switch (input) {
+            case "1", "pepsi":
+                return "Pepsi";
+            case "2", "sprite":
+                return "Sprite";
+            case "3", "sweet tea":
+                return "Sweet Tea";
+            case "4", "water":
+                return "Water";
+            default:
+                return "Drink Flavor not recognized";
+        }
 
+    }
+     static double addReceiptTotal(ArrayList<Double> orderTotal) {
+        double sum1 = 0.0;
+        for (double number : orderTotal) {
+
+            sum1 += number;
+        }
+        return sum1;
 
     }
     }
+
+
+
