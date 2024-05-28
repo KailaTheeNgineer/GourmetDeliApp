@@ -407,8 +407,8 @@ public class GourmetDeli {
 
                                             Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), convertStringToDrinkFlavor(userDrinkFlavor), 0);
                                             double drinkTotal = userDrink.getDrinkTotal(userDrink);
-                                            userDrink.setDrinktotal(drinkTotal);
-                                            orderTotals.add(userDrink.getDrinktotal());
+                                            userDrink.setDrinkTotal(drinkTotal);
+                                            orderTotals.add(userDrink.getDrinkTotal());
                                             receiptWriter.write("\nSmall " + userDrink.getDrinkFlavor() + "... $2.00\n");
                                             System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
                                             drinkScreen = false;
@@ -420,24 +420,23 @@ public class GourmetDeli {
 
                                             Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), convertStringToDrinkFlavor(userDrinkFlavor), 0);
                                             double drinkTotal = userDrink.getDrinkTotal(userDrink);
-                                            userDrink.setDrinktotal(drinkTotal);
-
-                                            orderTotals.add(userDrink.getDrinktotal());
+                                            userDrink.setDrinkTotal(drinkTotal);
+                                            orderTotals.add(userDrink.getDrinkTotal());
 
                                             receiptWriter.write("\nMedium " + userDrink.getDrinkFlavor() + "... $2.50\n");
                                             System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
                                             drinkScreen = false;
-                                        } else if (userDrinkInput.equals("3") || userDrinkInput.equalsIgnoreCase("Large")) {
+                                        } else if (userDrinkInput.equals("3") || userDrinkInput.equalsIgnoreCase("large")) {
+                                            convertStringToDrink(userDrinkInput);
                                             System.out.println("Choose a Flavor: ");
                                             System.out.println("1 ) Pepsi \n2) Sprite \n3) Sweet Tea \n4) Water");
                                             String userDrinkFlavor = myScanner.nextLine();
                                             userDrinkFlavor.toLowerCase();
 
                                             Drink userDrink = new Drink(convertStringToDrink(userDrinkInput), convertStringToDrinkFlavor(userDrinkFlavor), 0);
-                                            userDrink.setDrinktotal(userDrink.getDrinktotal());
-
-                                            orderTotals.add(userDrink.getDrinktotal());
-
+                                            double drinkTotal = userDrink.getDrinkTotal(userDrink);
+                                            userDrink.setDrinkTotal(drinkTotal);
+                                            orderTotals.add(userDrink.getDrinkTotal());
                                             receiptWriter.write("\nLarge " + userDrink.getDrinkFlavor() + "... $3.00\n");
                                             System.out.println(BRIGHT_GREEN + "\nDrink Added Successfully\n");
                                             drinkScreen = false;

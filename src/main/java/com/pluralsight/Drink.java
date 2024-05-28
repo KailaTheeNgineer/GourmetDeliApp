@@ -2,12 +2,12 @@ package com.pluralsight;
 
 public class Drink {
 
-    protected String drinkSize; protected double drinktotal; protected String drinkFlavor;
+    protected String drinkSize; protected double drinkTotal; protected String drinkFlavor;
 
-    public Drink(String drinkSize, String drinkFlavor, double drinkotal) {
+    public Drink(String drinkSize, String drinkFlavor, double drinkTotal) {
         this.drinkSize = drinkSize;
         this.drinkFlavor = drinkFlavor;
-        this.drinktotal = drinktotal;
+        this.drinkTotal = drinkTotal;
     }
 
     public String getDrinkFlavor() {
@@ -26,12 +26,12 @@ public class Drink {
         this.drinkSize = drinkSize;
     }
 
-    public double getDrinktotal() {
-        return drinktotal;
+    public double getDrinkTotal() {
+        return drinkTotal;
     }
 
-    public void setDrinktotal(double drinktotal) {
-        this.drinktotal = drinktotal;
+    public void setDrinkTotal(double drinkTotal) {
+        this.drinkTotal = drinkTotal;
     }
 
     public static double getDrinkTotal(Drink userDrink){
