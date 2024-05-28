@@ -342,6 +342,7 @@ public class GourmetDeli {
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
 
                                             }
+                                        }
 
                                             // Adding sandwich to their order arrayList
                                             userOrder.add(userSandwich);
@@ -359,7 +360,6 @@ public class GourmetDeli {
                                         }
 
 
-                                    }
 
 
                                     break;
