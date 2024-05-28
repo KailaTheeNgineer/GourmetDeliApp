@@ -6,8 +6,7 @@ import java.util.List;
 public abstract class Sandwich {
     protected String sizeSandwich; protected String breadType; protected String meatType; protected boolean extraMeat;
     protected String cheeseType; protected boolean extraCheese; protected boolean toasted;
-    protected  List<String> standardToppings; protected  List<String> premiumToppings;
-    protected  List<String> condiments; protected double total; protected int smallDrinkTotal = 2; protected double mediumDrinkTotal = 2.5;
+    protected  List<String> standardToppings; protected  List<String> condiments; protected double total; protected int smallDrinkTotal = 2; protected double mediumDrinkTotal = 2.5;
     protected int largeDrinkTotal = 3; protected double chipTotal = 1.5; protected double breadTotal;
     protected double meatTotal; protected double extraMeatTotal; protected double cheeseTotal;
     protected double extraCheeseTotal;
@@ -15,7 +14,6 @@ public abstract class Sandwich {
     public Sandwich(String sizeSandwich, String breadType, String meatType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, List<String> standardToppings, List<String> condiments, double total) {
         this.sizeSandwich = sizeSandwich;
         this.breadType = breadType;
-        this.meatType = meatType;
         this.extraMeat = extraMeat;
         this.cheeseType = cheeseType;
         this.extraCheese = extraCheese;
