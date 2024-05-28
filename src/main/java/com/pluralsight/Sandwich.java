@@ -9,9 +9,9 @@ public abstract class Sandwich {
     protected  List<String> standardToppings; protected  List<String> condiments; protected double total; protected int smallDrinkTotal = 2; protected double mediumDrinkTotal = 2.5;
     protected int largeDrinkTotal = 3; protected double chipTotal = 1.5; protected double breadTotal;
     protected double meatTotal; protected double extraMeatTotal; protected double cheeseTotal;
-    protected double extraCheeseTotal;
+    protected double extraCheeseTotal; protected String side;
 
-    public Sandwich(String sizeSandwich, String breadType, String meatType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, List<String> standardToppings, List<String> condiments, double total) {
+    public Sandwich(String sizeSandwich, String breadType, String meatType, boolean extraMeat, String cheeseType, boolean extraCheese, boolean toasted, List<String> standardToppings, List<String> condiments, String side, double total) {
         this.sizeSandwich = sizeSandwich;
         this.breadType = breadType;
         this.extraMeat = extraMeat;
@@ -21,6 +21,7 @@ public abstract class Sandwich {
         this.meatType = meatType;
         this.standardToppings = standardToppings;
         this.condiments = condiments;
+        this.side = side;
         this.total = total;
     }
 
@@ -117,6 +118,14 @@ public abstract class Sandwich {
 
 
         return chipTotal;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
     }
 
     public double getBreadTotal(String input) {

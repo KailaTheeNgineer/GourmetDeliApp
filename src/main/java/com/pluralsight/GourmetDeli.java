@@ -18,14 +18,16 @@ public class GourmetDeli {
     public static final String RED = "\u001B[31m";
     public static final String BRIGHT_WHITE = "\u001B[97m";
     public static final String BRIGHT_GREEN = "\u001B[92m";
+    public static final String BOLD = "\u001B[1m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     public static void main(String[] args) throws IOException {
 
         // While loop for the home screen
         boolean home = true;
         while (home) {
-            System.out.println(BRIGHT_WHITE + "\n\n\nWelcome to The Gourmet Deli\n\n");
-            System.out.println("To begin, select an option: ");
+            System.out.println(BRIGHT_WHITE + BOLD + "\n\n\n Welcome to The Gourmet Deli\n\n" + ANSI_RESET);
+            System.out.println(BRIGHT_WHITE + "To begin, select an option: ");
             System.out.println("1) New Order");
             System.out.println("X) Exit");
             String homeInput = myScanner.nextLine();
@@ -70,7 +72,7 @@ public class GourmetDeli {
                                     boolean addSandwich = true;
 
 
-                                    Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, condiments, 0);
+                                    Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, condiments,"No side", 0);
 
                                     while (addSandwich) {
                                         System.out.println(BRIGHT_WHITE + "Add A Sandwich\n\n\n");
@@ -153,7 +155,7 @@ public class GourmetDeli {
                                                 extraProteinScreen = false;
                                             } else if (userExtraMeat.contains("n") || (userExtraMeat.contains("N"))) {
                                                 extraProteinScreen = false;
-                                                  } else {
+                                            } else {
                                                 System.out.println(RED + "Value not recognized. Please try again.\n");
 
                                             }
@@ -175,7 +177,7 @@ public class GourmetDeli {
 
                                             } else if (convertIntToCheeseType(userCheeseType).equals("No Cheese")) {
 
-                                               extraCheeseScreen =false;
+                                                extraCheeseScreen =false;
                                                 cheeseTypeScreen = false;
 
 
@@ -190,174 +192,174 @@ public class GourmetDeli {
                                             }
                                         }
 
-                                            while (extraCheeseScreen) {
+                                        while (extraCheeseScreen) {
 
-                                                System.out.println(BRIGHT_WHITE + "Would you like extra cheese? Y/N (additional cost)");
-                                                String userExtraCheese = myScanner.nextLine();
-                                                userExtraCheese.toLowerCase();
-                                                convertValueToBool(userExtraCheese);
+                                            System.out.println(BRIGHT_WHITE + "Would you like extra cheese? Y/N (additional cost)");
+                                            String userExtraCheese = myScanner.nextLine();
+                                            userExtraCheese.toLowerCase();
+                                            convertValueToBool(userExtraCheese);
 
-                                                if (userExtraCheese.contains("y") || (userExtraCheese.contains("Y"))) {
+                                            if (userExtraCheese.contains("y") || (userExtraCheese.contains("Y"))) {
 
-                                                    userSandwich.setExtraCheese(true);
-                                                    receiptWriter.write("Extra Cheese: " + "... +$" + userSandwich.getExtraCheeseTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                userSandwich.setExtraCheese(true);
+                                                receiptWriter.write("Extra Cheese: " + "... +$" + userSandwich.getExtraCheeseTotal(userSandwich.getSizeSandwich()) + "\n");
 
-                                                    extraCheeseScreen = false;
-                                                } else if (userExtraCheese.contains("n") || (userExtraCheese.contains("N"))) {
-                                                    extraCheeseScreen = false;
-                                                } else {
-                                                    System.out.println(RED + "Value not recognized. Please try again.\n");
+                                                extraCheeseScreen = false;
+                                            } else if (userExtraCheese.contains("n") || (userExtraCheese.contains("N"))) {
+                                                extraCheeseScreen = false;
+                                            } else {
+                                                System.out.println(RED + "Value not recognized. Please try again.\n");
 
-                                                }
                                             }
+                                        }
                                         boolean addToppings = true;
 
 
-                                            while (addToppings) {
+                                        while (addToppings) {
 
-                                                System.out.println(BRIGHT_WHITE + "Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
-                                                        + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
-                                                String userToppings = myScanner.nextLine();
+                                            System.out.println(BRIGHT_WHITE + "Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
+                                                    + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
+                                            String userToppings = myScanner.nextLine();
 
-                                                if (userToppings.equals("0")) {
-                                                    addToppings = false;
-                                                } else if (userToppings.equals("1") || (userToppings.equalsIgnoreCase("Lettuce"))) {
-                                                    standardToppings.add("Lettuce");
-                                                    receiptWriter.write("     Lettuce\n");
+                                            if (userToppings.equals("0")) {
+                                                addToppings = false;
+                                            } else if (userToppings.equals("1") || (userToppings.equalsIgnoreCase("Lettuce"))) {
+                                                standardToppings.add("Lettuce");
+                                                receiptWriter.write("     Lettuce\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("2") || (userToppings.equalsIgnoreCase("Peppers"))) {
-                                                    standardToppings.add("Peppers");
-                                                    receiptWriter.write("     Peppers\n");
+                                            } else if (userToppings.equals("2") || (userToppings.equalsIgnoreCase("Peppers"))) {
+                                                standardToppings.add("Peppers");
+                                                receiptWriter.write("     Peppers\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("3") || (userToppings.equalsIgnoreCase("Onions"))) {
-                                                    standardToppings.add("Onions");
-                                                    receiptWriter.write("     Onions\n");
+                                            } else if (userToppings.equals("3") || (userToppings.equalsIgnoreCase("Onions"))) {
+                                                standardToppings.add("Onions");
+                                                receiptWriter.write("     Onions\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("4") || (userToppings.equalsIgnoreCase("Tomatoes"))) {
-                                                    standardToppings.add("Tomatoes");
-                                                    receiptWriter.write("     Tomatoes\n");
+                                            } else if (userToppings.equals("4") || (userToppings.equalsIgnoreCase("Tomatoes"))) {
+                                                standardToppings.add("Tomatoes");
+                                                receiptWriter.write("     Tomatoes\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("5") || (userToppings.equalsIgnoreCase("Jalapenos"))) {
-                                                    standardToppings.add("Jalapenos");
-                                                    receiptWriter.write("     Jalapenos\n");
+                                            } else if (userToppings.equals("5") || (userToppings.equalsIgnoreCase("Jalapenos"))) {
+                                                standardToppings.add("Jalapenos");
+                                                receiptWriter.write("     Jalapenos\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("6") || (userToppings.equalsIgnoreCase("Cucumbers"))) {
-                                                    standardToppings.add("Cucumbers");
-                                                    receiptWriter.write("     Cucumbers\n");
+                                            } else if (userToppings.equals("6") || (userToppings.equalsIgnoreCase("Cucumbers"))) {
+                                                standardToppings.add("Cucumbers");
+                                                receiptWriter.write("     Cucumbers\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("7") || (userToppings.equalsIgnoreCase("Pickles"))) {
-                                                    standardToppings.add("Pickles");
-                                                    receiptWriter.write("     Pickles\n");
+                                            } else if (userToppings.equals("7") || (userToppings.equalsIgnoreCase("Pickles"))) {
+                                                standardToppings.add("Pickles");
+                                                receiptWriter.write("     Pickles\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("8") || (userToppings.equalsIgnoreCase("Guacamole"))) {
-                                                    standardToppings.add("Guacamole");
-                                                    receiptWriter.write("     Guacamole");
+                                            } else if (userToppings.equals("8") || (userToppings.equalsIgnoreCase("Guacamole"))) {
+                                                standardToppings.add("Guacamole");
+                                                receiptWriter.write("     Guacamole");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else if (userToppings.equals("9") || (userToppings.equalsIgnoreCase("Mushrooms"))) {
-                                                    standardToppings.add("Mushrooms");
-                                                    receiptWriter.write("     Mushrooms\n");
+                                            } else if (userToppings.equals("9") || (userToppings.equalsIgnoreCase("Mushrooms"))) {
+                                                standardToppings.add("Mushrooms");
+                                                receiptWriter.write("     Mushrooms\n");
 
-                                                    addToppings = true;
+                                                addToppings = true;
 
-                                                } else {
-                                                    System.out.println(RED + "Topping not recognized. Please try again.");
-                                                }
+                                            } else {
+                                                System.out.println(RED + "Topping not recognized. Please try again.");
                                             }
-                                            boolean addCondiments = true;
+                                        }
+                                        boolean addCondiments = true;
 
-                                            while (addCondiments) {
+                                        while (addCondiments) {
 
-                                                System.out.println(BRIGHT_WHITE + "Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
-                                                        "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
-                                                String userCondiments = myScanner.nextLine();
+                                            System.out.println(BRIGHT_WHITE + "Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
+                                                    "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
+                                            String userCondiments = myScanner.nextLine();
 
-                                                if (userCondiments.equals("0")) {
-                                                    addCondiments = false;
-                                                } else if (userCondiments.equalsIgnoreCase("1") || (userCondiments.equalsIgnoreCase("Mayo"))) {
-                                                    condiments.add("Mayo");
-                                                    receiptWriter.write("     Mayo\n");
+                                            if (userCondiments.equals("0")) {
+                                                addCondiments = false;
+                                            } else if (userCondiments.equalsIgnoreCase("1") || (userCondiments.equalsIgnoreCase("Mayo"))) {
+                                                condiments.add("Mayo");
+                                                receiptWriter.write("     Mayo\n");
 
-                                                    addCondiments = true;
-                                                } else if (userCondiments.equalsIgnoreCase("2") || (userCondiments.equalsIgnoreCase("Mustard"))) {
-                                                    condiments.add("Mustard");
-                                                    receiptWriter.write("     Mustard\n");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("2") || (userCondiments.equalsIgnoreCase("Mustard"))) {
+                                                condiments.add("Mustard");
+                                                receiptWriter.write("     Mustard\n");
 
-                                                    addCondiments = true;
-                                                } else if (userCondiments.equalsIgnoreCase("3") || (userCondiments.equalsIgnoreCase("Ketchup"))) {
-                                                    condiments.add("Ketchup");
-                                                    receiptWriter.write("     Ketchup\n");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("3") || (userCondiments.equalsIgnoreCase("Ketchup"))) {
+                                                condiments.add("Ketchup");
+                                                receiptWriter.write("     Ketchup\n");
 
-                                                    addCondiments = true;
-                                                } else if (userCondiments.equalsIgnoreCase("4") || (userCondiments.equalsIgnoreCase("Ranch"))) {
-                                                    condiments.add("Ranch");
-                                                    receiptWriter.write("     Ranch\n");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("4") || (userCondiments.equalsIgnoreCase("Ranch"))) {
+                                                condiments.add("Ranch");
+                                                receiptWriter.write("     Ranch\n");
 
-                                                    addCondiments = true;
-                                                } else if (userCondiments.equalsIgnoreCase("5") || (userCondiments.equalsIgnoreCase("Vinaigrette"))) {
-                                                    condiments.add("Vinaigrette");
-                                                    receiptWriter.write("     Vinaigrette\n");
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("5") || (userCondiments.equalsIgnoreCase("Vinaigrette"))) {
+                                                condiments.add("Vinaigrette");
+                                                receiptWriter.write("     Vinaigrette\n");
 
-                                                    addCondiments = true;
-                                                } else if (userCondiments.equalsIgnoreCase("6") || (userCondiments.equalsIgnoreCase("Thousand Island"))) {
-                                                    condiments.add("Thousand Island");
-                                                    receiptWriter.write("     Thousand Island\n");
-                                                    addCondiments = true;
-                                                } else {
-                                                    System.out.println(RED + "Condiment not recognized. Please try again.");
-                                                }
-
+                                                addCondiments = true;
+                                            } else if (userCondiments.equalsIgnoreCase("6") || (userCondiments.equalsIgnoreCase("Thousand Island"))) {
+                                                condiments.add("Thousand Island");
+                                                receiptWriter.write("     Thousand Island\n");
+                                                addCondiments = true;
+                                            } else {
+                                                System.out.println(RED + "Condiment not recognized. Please try again.");
                                             }
-                                            boolean tosatedOrNot = true;
-                                            while (tosatedOrNot) {
-                                                System.out.println(BRIGHT_WHITE + "Would you like it toasted? (Y/N)");
-                                                String userToastSandwich = myScanner.nextLine();
-                                                convertValueToBool(userToastSandwich);
-
-                                                if (userToastSandwich.contains("y") || (userToastSandwich.contains("Y"))) {
-                                                    userSandwich.setExtraMeat(true);
-                                                    receiptWriter.write("\033[3mToasted\033[0m" + "\n");
-
-                                                    tosatedOrNot = false;
-                                                } else if (userToastSandwich.contains("n") || (userToastSandwich.contains("N"))) {
-                                                    tosatedOrNot = false;
-                                                } else {
-                                                    System.out.println(RED + "Value not recognized. Please try again.\n");
-
-                                                }
-
-                                                // Adding sandwich to their order arrayList
-                                                userOrder.add(userSandwich);
-
-
-
-                                                double finalCost = addTotal(userSandwich);
-                                                userSandwich.setTotal(finalCost);
-                                                orderTotals.add(userSandwich.getTotal());
-                                                receiptWriter.write(String.format("...... $%.2f", userSandwich.getTotal()));
-
-                                                System.out.println(BRIGHT_GREEN + "\nSandwich Added Successfully\n");
-                                                addSandwich = false;
-
-                                            }
-
 
                                         }
+                                        boolean tosatedOrNot = true;
+                                        while (tosatedOrNot) {
+                                            System.out.println(BRIGHT_WHITE + "Would you like it toasted? (Y/N)");
+                                            String userToastSandwich = myScanner.nextLine();
+                                            convertValueToBool(userToastSandwich);
+
+                                            if (userToastSandwich.contains("y") || (userToastSandwich.contains("Y"))) {
+                                                userSandwich.setExtraMeat(true);
+                                                receiptWriter.write("\033[3mToasted\033[0m" + "\n");
+
+                                                tosatedOrNot = false;
+                                            } else if (userToastSandwich.contains("n") || (userToastSandwich.contains("N"))) {
+                                                tosatedOrNot = false;
+                                            } else {
+                                                System.out.println(RED + "Value not recognized. Please try again.\n");
+
+                                            }
+
+                                            // Adding sandwich to their order arrayList
+                                            userOrder.add(userSandwich);
+
+
+
+                                            double finalCost = addTotal(userSandwich);
+                                            userSandwich.setTotal(finalCost);
+                                            orderTotals.add(userSandwich.getTotal());
+                                            receiptWriter.write(String.format("...... $%.2f", userSandwich.getTotal()));
+
+                                            System.out.println(BRIGHT_GREEN + "\nSandwich Added Successfully\n");
+                                            addSandwich = false;
+
+                                        }
+
+
+                                    }
 
 
                                     break;
@@ -443,7 +445,7 @@ public class GourmetDeli {
                                             convertStringToChip(userChipFlavor);
                                             Chips userChips = new Chips(convertStringToChip(userChipFlavor), 1.5);
 
-                                           orderTotals.add(userChips.getChipTotal());
+                                            orderTotals.add(userChips.getChipTotal());
 
                                             receiptWriter.write("\n" + userChips.getChipFlavor() + "... $1.50\n");
                                             System.out.println(BRIGHT_GREEN + "\nChips Added Successfully\n");
@@ -540,16 +542,16 @@ public class GourmetDeli {
                     }
 
                     break;
-                    case "x", "X":
-                        home = false;
-                        break;
-                        default:
-                            System.out.println(RED + "\n\nNot A Valid Option");
+                case "x", "X":
+                    home = false;
+                    break;
+                default:
+                    System.out.println(RED + "\n\nNot A Valid Option");
+            }
         }
+
+
     }
-
-
-}
 
 
 
@@ -595,21 +597,21 @@ public class GourmetDeli {
                 orderTotal += 2.00;
             }
 
-                if (userSandwichOrder.isExtraMeat() == true) {
-                    orderTotal += 1.00;
-                }
+            if (userSandwichOrder.isExtraMeat() == true) {
+                orderTotal += 1.00;
+            }
 
-                if (userSandwichOrder.getCheeseType().equalsIgnoreCase("No cheese")) {
+            if (userSandwichOrder.getCheeseType().equalsIgnoreCase("No cheese")) {
 
-                    orderTotal += 0;
-                } else {
-                    orderTotal += 1.50;
-                }
-                if (userSandwichOrder.isExtraCheese() == true) {
+                orderTotal += 0;
+            } else {
+                orderTotal += 1.50;
+            }
+            if (userSandwichOrder.isExtraCheese() == true) {
 
-                    orderTotal += 0.60;
+                orderTotal += 0.60;
 
-                    return orderTotal;
+                return orderTotal;
 
 
             }
@@ -653,4 +655,4 @@ public class GourmetDeli {
         return "No Toppings Available";
     }
 
-    }
+}
