@@ -4,7 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 // Importing conversion class
@@ -36,7 +35,7 @@ public class GourmetDeli {
             switch (homeInput) {
                 case "1":
 
-                    String directoryPath = "src/main/resources/receipts";
+                    String directoryPath = "src/main/resources/Receipts";
                     LocalDateTime receiptDate = LocalDateTime.now();
 
                     ArrayList<Double> orderTotals = new ArrayList<>();
@@ -82,8 +81,8 @@ public class GourmetDeli {
                                                     "2) 8in\n3) 12in");
                                             String userSizeSandwich = myScanner.nextLine();
                                             userSizeSandwich.toLowerCase();
-                                            convertIntToSize(userSizeSandwich);
-                                            if (convertIntToSize(userSizeSandwich).equals("Size not recognized")) {
+                                            // convertIntToSize(userSizeSandwich);
+                                            if (convertIntToSize(userSizeSandwich).equalsIgnoreCase("Size not recognized")) {
                                                 System.out.println(RED + "\nSize Not Recognized. Please Try Again\n");
                                                 sizeSandwichScreen = true;
                                             } else {
@@ -101,7 +100,7 @@ public class GourmetDeli {
                                             String userBreadType = myScanner.nextLine();
                                             userBreadType.toLowerCase();
                                             convertIntToBread(userBreadType);
-                                            if (convertIntToSize(userBreadType).equals("Bread not recognized")) {
+                                            if (convertIntToBread(userBreadType).equals("Bread not recognized")) {
                                                 System.out.println(RED + "\nBread Not Recognized. Please Try Again\n");
                                                 breadTypeScreen = true;
                                             } else {
@@ -122,7 +121,7 @@ public class GourmetDeli {
                                             userMeatType.toLowerCase();
                                             convertIntToMeatType(userMeatType);
                                             if (convertIntToMeatType(userMeatType).equals("Meat not recognized")) {
-                                                System.out.println(RED + "Meat not recognized. Please Try Again");
+                                                System.out.println(RED + "\nMeat not recognized. Please Try Again\n");
                                                 meatTypeScreen = true;
 
                                             } else if (convertIntToMeatType(userMeatType).equalsIgnoreCase("No meat")) {
