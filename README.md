@@ -1,68 +1,31 @@
-# Accounting Ledger App
-This app is designed to keep track of a user's transactions and records the information. After the user enters a
-transaction, it will be stored in a ledger. Through the `Ledger` screen, user has access to several screens that
-reveal data. There is an option to view all `Transactions`, only `Payments`, only `Deposits`, or to view `Reports`.
-In the `Reports` screen, Users can view monthly or annual reports or search for transactions from a specific vendor.
+# Delicious Gourmet Deli App
+This app is designed to take in an order. The user can add sandwiches, drinks, or chips to their order. They can customize their sandwich to add the toppings they want.
+Through the `Add Sandwich` screen, user can add a sandwich, drinks, or chips to their order. They also have the ability to cancel their order/go back home, or checkout their order. There is an option to view all `Transactions`, only `Payments`, only `Deposits`, or to view `Reports`.
+In the `Checkout` screen, user can view their current order and the order total. From here, they have the option to confirm the order, cancel the order, or add more items to the order.
 
 
 
 
 ### Home
-![Ledger Home](src/main/resources/LedgerHome.png)
-> *From the home screen, user can select an option to view the ledger, add a deposit, or payment.*
+![Deli Home](src/main/receipts/HOMEADDORDERSCREEN.png)
+> *From the home screen, user can start a new order or exit*
 
 
 
 
 
-### Ledger
-![Ledger Screen](src/main/resources/LedgerScreen.png)
->> *The ledger screen allows for user to view all transactions, only payments, only deposits, or check reports for the ledger.*
+### Create An Order
+![AddSandwichScreen](src/main/receipts/CREATEORDER.png)
+>> Screen allows for user to add a new sandiwch, chips, or a drink to their order.*
 
-![Display All Entries](src/main/resources/DisplayAllEntriesScreen.png)
->> *The display for all entries reveals all the transactions that have been successfully completed.*
+![Ask Extra](src/main/receipts/ASK EXTRA SCREEN.png)
+>> *While adding a sandwich, the user will be prompted for extra meet and cheese only if they add meat or cheese to the order*
 
-![Display Only Deposits](src/main/resources/AllDepositsScreen.png)
->> *This screen reveals only the deposits made in the account.*
+![Error Catch](src/main/receipts/ERRORCATCH.png)
+>> *While creating a sandwich, if input is invalid, user will be prompted to try again.*
 
-![Display Only Payments](src/main/resources/AllPaymentScreen.png)
->> *This screen reveals only the payments made in the account.*
-
-
-
-
-
-### Reports
-![Display Report Screen](src/main/resources/ReportScreen.png)
->> *This screen allows for user to generate a report or search for transactions from a specific vendor*
-
-![Month to Date](src/main/resources/MonthtoDateReport.png)
->> *Reveals the entries up to date with the current month*
-
-![Previous Month](src/main/resources/PrevmonthReport.png)
->> *Reveals all entries from the previous month*
-
-![Year to Date](src/main/resources/YeartoDateReport.png)
->> *Reveals all entries for the current year*
-
-![Previous Year](src/main/resources/PreviousYearReport.png)
->> *Reveals all entries from the year before*
-
-![Search Vendor](src/main/resources/SearchVendor.png)
->> *Allows user to search for all entries of a specific vendor*
-
-
-### User Input Example
-![Deposit Input](src/main/resources/DEPOSITINPUT.png)
->> *User input of a deposit*
-
-![Payment Input](src/main/resources/PAYMENTINPUT.png)
->> *User input of a payment*
-
-![LEDGER ENTRIES](src/main/resources/LEDGER.png)
->> *User input adds to the ledger*
-
-
+![Receipt](src/main/receipts/receipt.png)
+>> *Screen allows for user to view the order and order total. From here, they can confirm the order which is saved to the receipt file, save their order, or add more items.*
 
 
 
@@ -70,10 +33,9 @@ In the `Reports` screen, Users can view monthly or annual reports or search for 
 ### Project Summary
 
 
-:bulb: **Interesting Piece of Code:** The *all-exit* loop.
+:bulb: **Interesting Piece of Code:** The static ANSI colors.
 
->> `if (input.equalsIgnoreCase("R")) {
-break;
-} else {
-break; }`
->> *Used this statement for some screens to allow the user to go back with any key instead of 0 or R*
+>> `public static final String RED = "\u001B[31m";
+public static final String BRIGHT_WHITE = "\u001B[97m";
+public static final String BRIGHT_GREEN = "\u001B[92m";`
+>> *Used these Strings for formatting and color for the app*

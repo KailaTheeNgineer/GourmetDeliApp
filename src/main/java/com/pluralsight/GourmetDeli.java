@@ -26,7 +26,7 @@ public class GourmetDeli {
         // While loop for the home screen
         boolean home = true;
         while (home) {
-            System.out.println(BRIGHT_WHITE + BOLD + "\n\n\n Welcome to The Gourmet Deli\n\n" + ANSI_RESET);
+            System.out.println(BRIGHT_WHITE + BOLD + "\n\n\n Welcome to Delicious Gourmet Deli\n\n" + ANSI_RESET);
             System.out.println(BRIGHT_WHITE + "To begin, select an option: ");
             System.out.println("1) New Order");
             System.out.println("X) Exit");
@@ -35,7 +35,7 @@ public class GourmetDeli {
             switch (homeInput) {
                 case "1":
 
-                    String directoryPath = "src/main/resources/Receipts";
+                    String directoryPath = "src/main/receipts";
                     LocalDateTime receiptDate = LocalDateTime.now();
 
                     ArrayList<Double> orderTotals = new ArrayList<>();
