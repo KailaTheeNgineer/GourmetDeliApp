@@ -1,6 +1,6 @@
 # Delicious Gourmet Deli App
-This app is designed to take in an order. The user can add sandwiches, drinks, or chips to their order. They can customize their sandwich to add the toppings they want.
-Through the `Add Sandwich` screen, user can add a sandwich, drinks, or chips to their order. They also have the ability to cancel their order/go back home, or checkout their order. There is an option to view all `Transactions`, only `Payments`, only `Deposits`, or to view `Reports`.
+This app is designed to take in an order. 
+Through the `Create A New Order` screen, user can add a sandwich, drinks, or chips to their order. If adding a sandwich, they can customize it to add the toppings, size, and selections they want. They also have the ability to cancel their order/go back home, or checkout their order. There is an option to view all `Transactions`, only `Payments`, only `Deposits`, or to view `Reports`.
 In the `Checkout` screen, user can view their current order and the order total. From here, they have the option to confirm the order, cancel the order, or add more items to the order.
 
 
