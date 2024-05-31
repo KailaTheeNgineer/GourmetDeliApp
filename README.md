@@ -49,6 +49,9 @@ In the `Checkout` screen, user can view their current order and the order total.
 
 ### Project Summary
 
+## Project Board
+![ProjectBoard](src/main/receipts/GourmetDeliPROJECTBOARD.drawio.png)
+
 
 :bulb: **Interesting Piece of Code:** The static ANSI colors.
 
