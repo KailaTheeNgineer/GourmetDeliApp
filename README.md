@@ -42,7 +42,7 @@ In the `Checkout` screen, user can view their current order and the order total.
 
 ### Checkout
 ![Receipt](src/main/receipts/receipt2.png)
->> *Screen allows for user to view the order and order total. From here, they can confirm the order which is saved to the receipt file, save their order, or add more items.*
+> *Screen allows for user to view the order and order total. From here, they can confirm the order which is saved to the receipt file, save their order, or add more items.*
 
 
 
