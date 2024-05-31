@@ -20,7 +20,7 @@ In the `Checkout` screen, user can view their current order and the order total.
 
 ### Adding a Sandwich
 ![Ask Extra](src/main/receipts/ASKEXTRASCREEN.png)
->> *While adding a sandwich, the user will be prompted for extra meat and cheese only if they add meat or cheese to the order*
+>> *While adding a sandwich, the user will be prompted for extra meat and cheese only if they add meat or cheese to the order. User can also type out the name of the value or select the number assigned to it.*
 
 ![Error Catch](src/main/receipts/ERRORCATCH.png)
 >> *While creating a sandwich, if input is invalid, user will be prompted to try again.*
