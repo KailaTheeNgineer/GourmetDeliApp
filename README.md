@@ -16,15 +16,25 @@ In the `Checkout` screen, user can view their current order and the order total.
 
 ### Create An Order
 ![AddSandwichScreen](src/main/receipts/CREATEORDER.png)
->> Screen allows for user to add a new sandiwch, chips, or a drink to their order.*
+>> Screen allows for user to add a new sandwich, chips, or a drink to their order.*
 
+### Adding a Sandwich
 ![Ask Extra](src/main/receipts/ASKEXTRASCREEN.png)
 >> *While adding a sandwich, the user will be prompted for extra meet and cheese only if they add meat or cheese to the order*
 
 ![Error Catch](src/main/receipts/ERRORCATCH.png)
 >> *While creating a sandwich, if input is invalid, user will be prompted to try again.*
 
-![Receipt](src/main/receipts/receipt.png)
+### Add A Drink
+![AddDrink](src/main/receipts/addDrinkScreen.png)
+>> *User can add a drink and select the size and flavor they want*
+
+### Add Chips
+![AddChips](src/main/receipts/addingChipsScreen.png)
+>> *User can add chips to an order.*
+
+### Checkout
+![Receipt](src/main/receipts/receipt2.png)
 >> *Screen allows for user to view the order and order total. From here, they can confirm the order which is saved to the receipt file, save their order, or add more items.*
 
 

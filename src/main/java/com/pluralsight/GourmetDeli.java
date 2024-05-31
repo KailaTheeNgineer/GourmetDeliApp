@@ -34,10 +34,11 @@ public class GourmetDeli {
 
             switch (homeInput) {
                 case "1":
-
+                    // creating the file and filename
                     String directoryPath = "src/main/receipts";
                     LocalDateTime receiptDate = LocalDateTime.now();
 
+                    // Creating the necessary arrays
                     ArrayList<Double> orderTotals = new ArrayList<>();
                     ArrayList<String> standardToppings = new ArrayList();
                     ArrayList<String> condiments = new ArrayList();
@@ -51,6 +52,8 @@ public class GourmetDeli {
                     while (newOrder) {
 
                         try {
+
+                            // Starting the file writer in the while loop of adding order
                             File receipt = new File(directoryPath + receiptDate);
                             receipt.createNewFile();
                             FileWriter receiptWriter = new FileWriter(receipt, true);
@@ -68,7 +71,7 @@ public class GourmetDeli {
                                     // while loop to exit adding a sandwich
                                     boolean addSandwich = true;
 
-
+                                    // Default sandwich
                                     Sandwich userSandwich = new SandwichBuilder("null", "null", "null", false, "null", false, false, standardToppings, condiments, "No side", 0);
 
                                     while (addSandwich) {
@@ -81,11 +84,12 @@ public class GourmetDeli {
                                                     "2) 8in\n3) 12in");
                                             String userSizeSandwich = myScanner.nextLine();
                                             userSizeSandwich.toLowerCase();
-                                            // convertIntToSize(userSizeSandwich);
+                                             // error screen
                                             if (convertIntToSize(userSizeSandwich).equalsIgnoreCase("Size not recognized")) {
                                                 System.out.println(RED + "\nSize Not Recognized. Please Try Again\n");
                                                 sizeSandwichScreen = true;
                                             } else {
+                                                // setting the sandwich variable and writing it to the receipt file
                                                 userSandwich.setSizeSandwich(convertIntToSize(userSizeSandwich));
                                                 receiptWriter.write("..... " + convertIntToSize(userSizeSandwich) + " .....\n");
 
@@ -96,16 +100,21 @@ public class GourmetDeli {
                                         boolean breadTypeScreen = true;
 
                                         while (breadTypeScreen) {
+
                                             System.out.println(BRIGHT_WHITE + "Bread Type: \n1) White\n2) Wheat\n3) Rye\n4) Wrap");
                                             String userBreadType = myScanner.nextLine();
                                             userBreadType.toLowerCase();
                                             convertIntToBread(userBreadType);
                                             if (convertIntToBread(userBreadType).equals("Bread not recognized")) {
+                                                // error screen
                                                 System.out.println(RED + "\nBread Not Recognized. Please Try Again\n");
                                                 breadTypeScreen = true;
                                             } else {
+                                                // setting the sandwich variable and writing it to the receipt file
                                                 userSandwich.setBreadType(convertIntToBread(userBreadType));
-                                                receiptWriter.write("Bread Type: " + convertIntToBread(userBreadType) + " ... +$" + userSandwich.getBreadTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write("Bread Type: " + convertIntToBread(userBreadType) + " ... +");
+                                                receiptWriter.write(String.format("$%.2f\n", userSandwich.getBreadTotal(userSandwich.getSizeSandwich())));
+
 
                                                 breadTypeScreen = false;
                                             }
@@ -129,7 +138,8 @@ public class GourmetDeli {
                                                 meatTypeScreen = false;
                                             } else {
                                                 userSandwich.setMeatType(convertIntToMeatType(userMeatType));
-                                                receiptWriter.write(convertIntToMeatType(userMeatType) + "... +$" + userSandwich.getMeatTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write(convertIntToMeatType(userMeatType) + "... +");
+                                                receiptWriter.write(String.format("$%.2f\n", userSandwich.getMeatTotal(userSandwich.getSizeSandwich())));
 
                                                 extraProteinScreen = true;
                                                 meatTypeScreen = false;
@@ -144,10 +154,10 @@ public class GourmetDeli {
 
 
                                             if (userExtraMeat.contains("y") || (userExtraMeat.contains("Y"))) {
-
+                                                // setting the sandwich variable and writing it to the receipt file
                                                 userSandwich.setExtraMeat(true);
-
-                                                receiptWriter.write("Extra Meat: " + "... +$" + userSandwich.getExtraMeatTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write("Extra Meat: " + "... +");
+                                                receiptWriter.write(String.format("$%.2f\n", userSandwich.getExtraMeatTotal(userSandwich.getSizeSandwich())));
 
                                                 extraProteinScreen = false;
                                             } else if (userExtraMeat.contains("n") || (userExtraMeat.contains("N"))) {
@@ -179,8 +189,11 @@ public class GourmetDeli {
 
 
                                             } else {
+                                                // setting the sandwich variable and writing it to the receipt file
                                                 userSandwich.setCheeseType(convertIntToCheeseType(userCheeseType));
-                                                receiptWriter.write(convertIntToCheeseType(userCheeseType) + "... +$" + userSandwich.getCheeseTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write(convertIntToCheeseType(userCheeseType) + "... +");
+                                                receiptWriter.write(String.format("$%.2f\n", userSandwich.getCheeseTotal(userSandwich.getSizeSandwich())));
+
 
                                                 extraCheeseScreen = true;
                                                 cheeseTypeScreen = false;
@@ -197,8 +210,11 @@ public class GourmetDeli {
 
                                             if (userExtraCheese.contains("y") || (userExtraCheese.contains("Y"))) {
 
+                                                // setting the sandwich variable and writing it to the receipt file
                                                 userSandwich.setExtraCheese(true);
-                                                receiptWriter.write("Extra Cheese: " + "... +$" + userSandwich.getExtraCheeseTotal(userSandwich.getSizeSandwich()) + "\n");
+                                                receiptWriter.write("Extra Cheese: " + "... +");
+                                                receiptWriter.write(String.format("$%.2f\n", userSandwich.getExtraCheeseTotal(userSandwich.getSizeSandwich())));
+
 
                                                 extraCheeseScreen = false;
                                             } else if (userExtraCheese.contains("n") || (userExtraCheese.contains("N"))) {
@@ -214,7 +230,7 @@ public class GourmetDeli {
                                         while (addToppings) {
 
                                             System.out.println(BRIGHT_WHITE + "Add Toppings: \n1) Lettuce 2) Peppers 3) Onions 4) Tomatoes\n"
-                                                    + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue");
+                                                    + "5) Jalapenos 6) Cucumbers 7) Pickles 8) Guacamole 9) Mushrooms 0) Continue\n(Enter 0 to go to next screen)");
                                             String userToppings = myScanner.nextLine();
 
                                             if (userToppings.equals("0")) {
@@ -282,7 +298,7 @@ public class GourmetDeli {
                                         while (addCondiments) {
 
                                             System.out.println(BRIGHT_WHITE + "Add Condiments: \n1) Mayo 2) Mustard 3) Ketchup\n" +
-                                                    "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue");
+                                                    "4) Ranch 5) Vinaigrette 6) Thousand Islands 0) Continue\n(Enter 0 to go to next screen)");
                                             String userCondiments = myScanner.nextLine();
 
                                             if (userCondiments.equals("0")) {
@@ -329,6 +345,8 @@ public class GourmetDeli {
 
                                             if (userToastSandwich.contains("y") || (userToastSandwich.contains("Y"))) {
                                                 userSandwich.setExtraMeat(true);
+
+                                                // Formatted in italics
                                                 receiptWriter.write("\033[3mToasted\033[0m" + "\n");
 
                                                 tosatedOrNot = false;
@@ -353,7 +371,6 @@ public class GourmetDeli {
 
 
                                                 receiptWriter.write("     + Side Sauce");
-
                                                 receiptWriter.write("\n");
 
 
