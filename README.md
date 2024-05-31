@@ -34,11 +34,11 @@ In the `Checkout` screen, user can view their current order and the order total.
 
 ### Add A Drink
 ![AddDrink](src/main/receipts/addDrinkScreen.png)
->> *User can add a drink and select the size and flavor they want*
+> *User can add a drink and select the size and flavor they want*
 
 ### Add Chips
 ![AddChips](src/main/receipts/addingChipsScreen.png)
->> *User can add chips to an order.*
+> *User can add chips to an order.*
 
 ### Checkout
 ![Receipt](src/main/receipts/receipt2.png)
